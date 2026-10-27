@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Painel de gestão escolar — SGE">
+  <title>SGE | Gestão Escolar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="SGE página inicial">
+        <span class="brand-icon">▤</span>
+        <span><strong>SGE</strong><small>Gestão Escolar</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <a class="nav-item active" href="#dashboard" data-page="Dashboard"><span>⌂</span> Dashboard</a>
+        <a class="nav-item" href="#alunos" data-page="Alunos"><span>♟</span> Alunos <b>›</b></a>
+        <a class="nav-item" href="#matriculas" data-page="Matrículas"><span>▤</span> Matrículas</a>
+        <a class="nav-item" href="#turmas" data-page="Turmas"><span>♧</span> Turmas</a>
+        <a class="nav-item" href="#encarregados" data-page="Encarregados"><span>♙</span> Encarregados</a>
+        <a class="nav-item" href="#emergencias" data-page="Emergências"><span>☎</span> Emergências</a>
+        <a class="nav-item" href="#ocorrencias" data-page="Ocorrências"><span>✚</span> Ocorrências</a>
+        <a class="nav-item" href="#relatorios" data-page="Relatórios"><span>▥</span> Relatórios <b>›</b></a>
+        <a class="nav-item" href="#calendario" data-page="Calendário"><span>▦</span> Calendário</a>
+        <a class="nav-item" href="#mensagens" data-page="Mensagens"><span>✉</span> Mensagens <em>3</em></a>
+        <a class="nav-item" href="#definicoes" data-page="Definições"><span>⚙</span> Definições</a>
+      </nav>
+      <div class="sidebar-quote">
+        <div class="book-stack" aria-hidden="true">▰<br>▰ ▰<br>▰ ▰ ▰</div>
+        <p>“Educação hoje,<br>mais oportunidades<br>amanhã.”</p>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="icon-button menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+        <label class="search-box">
+          <span>⌕</span>
+          <input id="globalSearch" type="search" placeholder="Pesquisar alunos, turmas, matrículas..." aria-label="Pesquisar">
+          <kbd>Ctrl K</kbd>
+        </label>
+        <div class="top-actions">
+          <button class="icon-button notification-trigger" id="notificationButton" aria-label="Notificações">♧<i>5</i></button>
+          <button class="icon-button" id="themeToggle" aria-label="Alternar tema">☾</button>
+          <button class="profile-button" id="profileButton">
+            <span class="avatar avatar-admin">LF</span>
+            <span class="profile-copy"><strong>Ludy Farias</strong><small>Administrador</small></span>
+            <span>⌄</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="content" id="dashboard">
+        <section class="welcome-banner">
+          <div class="welcome-copy">
+            <span class="eyebrow">PAINEL DE CONTROLO</span>
+            <h1>Bem-vinda, Ludy!</h1>
+            <p>Aqui tens uma visão geral da tua escola. Gere alunos,<br class="desktop-only"> turmas, ocorrências e muito mais de forma simples.</p>
+            <button class="primary-button" id="startButton">Começar <span>→</span></button>
+          </div>
+          <div class="student-art" aria-hidden="true">
+            <div class="art-circle"></div><div class="student student-one">👩🏾‍🎓</div><div class="student student-two">👨🏿‍🎓</div>
+            <p>“Construindo<br>futuros através<br>da educação”</p>
+          </div>
+        </section>
+
+        <section class="stats-grid" aria-label="Resumo da escola">
+          <article class="stat-card">
+            <div class="stat-icon coral">♟</div><div><span>Total de Alunos</span><strong>482</strong><small class="trend up">↑ 12%</small><p>em relação ao mês anterior</p></div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-icon blue">◆</div><div><span>Turmas</span><strong>18</strong><small class="trend up">↑ 6%</small><p>turmas activas</p></div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-icon green">✚</div><div><span>Ocorrências</span><strong>24</strong><small class="trend down">↓ 8%</small><p>este mês</p></div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-icon violet">♙</div><div><span>Encarregados</span><strong>451</strong><small class="trend up">↑ 10%</small><p>contactos registados</p></div>
+          </article>
+        </section>
+
+        <section class="primary-grid">
+          <article class="panel students-panel" id="alunos">
+            <div class="panel-heading"><h2>Alunos Recentes</h2><button class="text-button" data-action="all-students">Ver todos →</button></div>
+            <div class="table-wrap">
+              <table id="studentsTable">
+                <thead><tr><th>#</th><th>Nome</th><th>Matrícula</th><th>Turma</th><th>Data Registo</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td>1</td><td><span class="mini-avatar">AS</span>Ana Silva</td><td>2024-001</td><td>10.º A</td><td>24/10/2026</td><td><span class="status">Activo</span></td></tr>
+                  <tr><td>2</td><td><span class="mini-avatar orange">CM</span>Carlos Mendes</td><td>2024-002</td><td>11.º B</td><td>23/10/2026</td><td><span class="status">Activo</span></td></tr>
+                  <tr><td>3</td><td><span class="mini-avatar pink">BM</span>Beatriz Manuel</td><td>2024-003</td><td>9.º A</td><td>22/10/2026</td><td><span class="status">Activo</span></td></tr>
+                  <tr><td>4</td><td><span class="mini-avatar gold">JP</span>João Pedro</td><td>2024-004</td><td>12.º A</td><td>21/10/2026</td><td><span class="status">Activo</span></td></tr>
+                  <tr><td>5</td><td><span class="mini-avatar purple">SL</span>Sofia Lima</td><td>2024-005</td><td>10.º B</td><td>20/10/2026</td><td><span class="status">Activo</span></td></tr>
+                </tbody>
+              </table>
+              <p class="empty-state" id="emptyState" hidden>Nenhum aluno corresponde à pesquisa.</p>
+            </div>
+          </article>
+
+          <article class="panel distribution-panel">
+            <div class="panel-heading"><h2>Distribuição por Turmas</h2><button class="more-button" aria-label="Mais opções">•••</button></div>
+            <div class="distribution-content">
+              <div class="donut-chart"><div class="donut-hole"><strong>482</strong><span>Alunos</span></div></div>
+              <ul class="legend">
+                <li><span class="dot blue-dot"></span>9.º Classe <b>24%</b></li>
+                <li><span class="dot green-dot"></span>10.º Classe <b>28%</b></li>
+                <li><span class="dot yellow-dot"></span>11.º Classe <b>26%</b></li>
+                <li><span class="dot violet-dot"></span>12.º Classe <b>22%</b></li>
+              </ul>
+            </div>
+          </article>
+        </section>
+
+        <section class="secondary-grid">
+          <article class="panel quick-panel">
+            <div class="panel-heading"><h2>Ações Rápidas</h2></div>
+            <div class="quick-actions">
+              <button class="quick-action quick-blue" data-action="new-student"><span>♟＋</span>Novo Aluno</button>
+              <button class="quick-action quick-green" data-action="new-class"><span>♧</span>Nova Turma</button>
+              <button class="quick-action quick-yellow" data-action="new-incident"><span>▤</span>Registar Ocorrência</button>
+              <button class="quick-action quick-purple" data-action="report"><span>▥</span>Gerar Relatório</button>
+            </div>
+          </article>
+
+          <article class="panel incidents-panel" id="ocorrencias">
+            <div class="panel-heading"><h2>Ocorrências Recentes</h2><button class="text-button" data-action="all-incidents">Ver todas →</button></div>
+            <ul class="activity-list">
+              <li><span class="dot red-dot"></span><div><strong>Indisciplina na sala de aula</strong><small>Carlos Mendes · 11.º B</small></div><time>24/10</time></li>
+              <li><span class="dot yellow-dot"></span><div><strong>Falta injustificada</strong><small>Ana Silva · 10.º A</small></div><time>23/10</time></li>
+              <li><span class="dot yellow-dot"></span><div><strong>Atraso recorrente</strong><small>João Pedro · 12.º A</small></div><time>22/10</time></li>
+              <li><span class="dot red-dot"></span><div><strong>Comportamento inadequado</strong><small>Beatriz Manuel · 9.º A</small></div><time>21/10</time></li>
+            </ul>
+          </article>
+
+          <article class="panel notifications-panel" id="mensagens">
+            <div class="panel-heading"><h2>Notificações</h2><button class="text-button" data-action="all-notifications">Ver todas →</button></div>
+            <ul class="activity-list">
+              <li><span class="dot blue-dot"></span><div><strong>Nova matrícula registada</strong><small>Ana Silva · 10.º A</small></div><time>há 2h</time></li>
+              <li><span class="dot green-dot"></span><div><strong>Ocorrência resolvida</strong><small>Carlos Mendes · 11.º B</small></div><time>há 4h</time></li>
+              <li><span class="dot yellow-dot"></span><div><strong>Reunião agendada</strong><small>Turma 9.º A</small></div><time>há 6h</time></li>
+              <li><span class="dot violet-dot"></span><div><strong>Novo encarregado registado</strong><small>Maria Lima (mãe de João Pedro)</small></div><time>há 8h</time></li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="bottom-grid">
+          <article class="panel calendar-panel" id="calendario">
+            <div class="panel-heading"><h2>Calendário Escolar</h2><span class="calendar-month" id="calendarMonth">Outubro 2026</span></div>
+            <div class="calendar-controls"><button id="prevMonth" aria-label="Mês anterior">‹</button><strong id="monthLabel">Outubro 2026</strong><button id="nextMonth" aria-label="Mês seguinte">›</button></div>
+            <div class="calendar-grid" id="calendarGrid"></div>
+          </article>
+          <article class="panel events-panel">
+            <div class="panel-heading"><h2>Eventos Próximos</h2><button class="text-button" data-action="all-events">Ver todos →</button></div>
+            <ul class="event-list">
+              <li><span class="event-dot blue-dot"></span><div><strong>Reunião de Encarregados</strong><small>10:00 – 12:00</small></div><time><b>25</b><small>OUT</small></time></li>
+              <li><span class="event-dot green-dot"></span><div><strong>Entrega de Avaliações</strong><small>08:00 – 16:00</small></div><time><b>28</b><small>OUT</small></time></li>
+              <li><span class="event-dot violet-dot"></span><div><strong>Formação de Professores</strong><small>14:00 – 16:00</small></div><time><b>30</b><small>OUT</small></time></li>
+            </ul>
+          </article>
+        </section>
+        <footer class="footer"><span>© 2026 SGE · Sistema de Gestão Escolar</span><span>Feito para simplificar a gestão escolar <b>✦</b></span></footer>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog class="modal" id="actionModal">
+    <form method="dialog">
+      <button class="modal-close" aria-label="Fechar">×</button>
+      <span class="modal-kicker">SGE · AÇÃO RÁPIDA</span>
+      <h2 id="modalTitle">Nova ação</h2>
+      <p id="modalText">Esta área será ligada à base de dados numa próxima fase.</p>
+      <div class="modal-actions"><button class="secondary-button">Fechar</button><button class="primary-button" id="modalConfirm" value="confirm">Entendido</button></div>
+    </form>
+  </dialog>
+  <script src="js/app.js"></script>
+</body>
+</html>
