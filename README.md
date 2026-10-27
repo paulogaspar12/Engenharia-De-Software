@@ -1,37 +1,38 @@
-# SGE — Sistema de Gestão Escolar (frontend inicial)
+# SGE — Sistema de Gestão Escolar
 
-## Estado actual
-**Fase 1 — Estrutura visual e interacções demonstrativas.**
+Protótipo frontend em HTML5, CSS3 e JavaScript puro.
 
-Este protótipo contém um dashboard responsivo feito com HTML5, CSS3 e JavaScript puro. Ainda não está ligado à base de dados nem ao backend Java.
+## Versão 2 — Controlo de perfis
+Esta versão adiciona uma área de gestão de perfis e permissões demonstrativas.
 
-## Como executar
+### Executar
 1. Descompacte o projecto.
-2. Abra `index.html` num navegador moderno.
-3. Para desenvolvimento, recomenda-se abrir a pasta no VS Code e usar a extensão Live Server.
+2. Abra a pasta no Visual Studio Code.
+3. Abra `index.html` directamente ou execute com a extensão Live Server.
 
-Não é necessária instalação de dependências JavaScript.
+Não são necessárias dependências JavaScript nem servidor para testar o protótipo.
 
-## Funcionalidades já incluídas
-- Layout responsivo com menu lateral.
-- Dashboard com indicadores, tabela de alunos e ocorrências demonstrativas.
-- Pesquisa local na tabela de alunos.
-- Alternância entre tema claro e escuro (preferência guardada no navegador).
-- Calendário com navegação entre meses.
-- Modais e notificações para acções demonstrativas.
-- Atalhos: `Ctrl + K` ou `Cmd + K` para focar a pesquisa.
+### Testar o controlo de perfis
+1. Seleccione **Perfis e Acessos** no menu lateral.
+2. Crie ou edite um perfil.
+3. Abra **Permissões** para seleccionar as operações permitidas por módulo.
+4. As alterações são guardadas no `localStorage` do navegador.
 
-## Limitações actuais
-- Os dados são fictícios e estão escritos no HTML.
-- Os formulários e botões ainda não gravam dados.
-- Não existe autenticação nem ligação à base de dados.
-- Os relatórios e a impressão serão implementados numa fase posterior; antes de imprimir, o sistema deverá mostrar a fase actual, os trabalhos concluídos, as pendências e os próximos passos.
+### Estrutura
+```text
+sge-v2/
+├── index.html
+├── css/
+│   └── styles.css
+├── js/
+│   └── app.js
+├── assets/
+│   └── dashboard-referencia.png
+└── docs/
+    └── diario-desenvolvimento.md
+```
 
-## Estrutura
-- `index.html` — estrutura semântica da interface.
-- `css/styles.css` — layout, componentes e media queries.
-- `js/app.js` — interacções, pesquisa, tema e calendário.
-- `docs/diario-desenvolvimento.md` — registo de fases e decisões.
+### Aviso importante
+Esta é apenas uma demonstração de interface. Os perfis e permissões no navegador **não impedem acessos indevidos** e não devem ser usados para proteger dados reais. A segurança efectiva será implementada no backend Java/Spring Security, depois de analisarmos a base de dados existente.
 
-## Próxima fase
-Analisar a base de dados existente e adaptar o modelo visual antes de implementar o backend Java/Spring Boot.
+Consulte `docs/diario-desenvolvimento.md` para o registo das fases, decisões, limitações e comandos Git.

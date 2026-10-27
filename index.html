@@ -28,6 +28,7 @@
         <a class="nav-item" href="#relatorios" data-page="Relatórios"><span>▥</span> Relatórios <b>›</b></a>
         <a class="nav-item" href="#calendario" data-page="Calendário"><span>▦</span> Calendário</a>
         <a class="nav-item" href="#mensagens" data-page="Mensagens"><span>✉</span> Mensagens <em>3</em></a>
+        <a class="nav-item" href="#perfis" data-page="Perfis e Acessos"><span>♙</span> Perfis e Acessos</a>
         <a class="nav-item" href="#definicoes" data-page="Definições"><span>⚙</span> Definições</a>
       </nav>
       <div class="sidebar-quote">
@@ -48,7 +49,7 @@
           <button class="icon-button notification-trigger" id="notificationButton" aria-label="Notificações">♧<i>5</i></button>
           <button class="icon-button" id="themeToggle" aria-label="Alternar tema">☾</button>
           <button class="profile-button" id="profileButton">
-            <span class="avatar avatar-admin">AD</span>
+              <span class="avatar avatar-admin">AD</span>
             <span class="profile-copy"><strong>Admin</strong><small>Administrador</small></span>
             <span>⌄</span>
           </button>
@@ -165,8 +166,54 @@
         </section>
         <footer class="footer"><span>© 2026 SGE · Sistema de Gestão Escolar</span><span>Feito para simplificar a gestão escolar <b>✦</b></span></footer>
       </div>
+
+      <section class="content profiles-page" id="profilesPage" hidden>
+        <div class="page-heading">
+          <div><span class="eyebrow">ADMINISTRAÇÃO · SEGURANÇA</span><h1>Perfis e acessos</h1><p>Define o que cada grupo de utilizadores pode consultar e gerir.</p></div>
+          <button class="primary-button" id="addProfileButton">＋ Novo perfil</button>
+        </div>
+        <div class="notice-card"><span class="notice-icon">ⓘ</span><div><strong>Modo de demonstração</strong><p>As alterações ficam guardadas apenas neste navegador. A proteção real será implementada no backend Java/Spring Security.</p></div></div>
+        <div class="profile-summary-grid">
+          <article class="profile-summary-card"><span>Perfis configurados</span><strong id="profileCount">6</strong><small>Grupos de acesso</small></article>
+          <article class="profile-summary-card"><span>Perfis activos</span><strong id="activeProfileCount">6</strong><small>Disponíveis para atribuição</small></article>
+          <article class="profile-summary-card"><span>Permissões disponíveis</span><strong>20</strong><small>Operações por módulo</small></article>
+        </div>
+        <article class="panel profile-list-panel">
+          <div class="panel-heading profile-list-heading"><div><h2>Lista de perfis</h2><p>Escolhe um perfil para consultar ou editar as suas permissões.</p></div><label class="profile-search"><span>⌕</span><input id="profileSearch" type="search" placeholder="Pesquisar perfil..."></label></div>
+          <div class="table-wrap"><table class="profiles-table"><thead><tr><th>Perfil</th><th>Descrição</th><th>Permissões</th><th>Estado</th><th class="actions-column">Acções</th></tr></thead><tbody id="profilesTableBody"></tbody></table><p class="empty-state" id="profilesEmptyState" hidden>Nenhum perfil encontrado.</p></div>
+        </article>
+        <article class="panel permissions-panel">
+          <div class="panel-heading"><div><h2>Matriz de permissões</h2><p>Pré-visualização das permissões do perfil seleccionado.</p></div><span class="permission-profile-label" id="selectedProfileLabel">Administrador</span></div>
+          <div class="table-wrap"><table class="permission-table"><thead><tr><th>Módulo</th><th>Consultar</th><th>Criar</th><th>Editar</th><th>Eliminar</th></tr></thead><tbody id="permissionsTableBody"></tbody></table></div>
+          <div class="permission-footer"><small>As permissões apresentadas são demonstrativas e não protegem rotas nem dados nesta versão.</small><button class="secondary-button" id="editSelectedPermissions">Editar permissões</button></div>
+        </article>
+        <footer class="footer"><span>© 2026 SGE · Versão 2 — Controlo de perfis</span><span>Documentar cada alteração faz parte do desenvolvimento <b>✦</b></span></footer>
+      </section>
     </main>
   </div>
+
+  <dialog class="modal profile-modal" id="profileModal">
+    <form id="profileForm">
+      <button type="button" class="modal-close" id="closeProfileModal" aria-label="Fechar">×</button>
+      <span class="modal-kicker">SGE · GESTÃO DE ACESSOS</span>
+      <h2 id="profileModalTitle">Novo perfil</h2>
+      <label class="form-field">Nome do perfil<input id="profileName" name="name" required maxlength="60" placeholder="Ex.: Coordenador pedagógico"></label>
+      <label class="form-field">Descrição<textarea id="profileDescription" name="description" rows="3" maxlength="180" placeholder="Responsabilidades deste perfil"></textarea></label>
+      <label class="form-field">Estado<select id="profileStatus"><option value="active">Activo</option><option value="inactive">Inactivo</option></select></label>
+      <div class="modal-actions"><button type="button" class="secondary-button" id="cancelProfileButton">Cancelar</button><button type="submit" class="primary-button">Guardar perfil</button></div>
+    </form>
+  </dialog>
+
+  <dialog class="modal permissions-modal" id="permissionsModal">
+    <form id="permissionsForm">
+      <button type="button" class="modal-close" id="closePermissionsModal" aria-label="Fechar">×</button>
+      <span class="modal-kicker">SGE · PERMISSÕES</span>
+      <h2 id="permissionsModalTitle">Editar permissões</h2>
+      <p class="modal-description">Selecciona as operações autorizadas para cada módulo.</p>
+      <div id="permissionCheckboxes" class="permission-checkboxes"></div>
+      <div class="modal-actions"><button type="button" class="secondary-button" id="cancelPermissionsButton">Cancelar</button><button type="submit" class="primary-button">Guardar permissões</button></div>
+    </form>
+  </dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <dialog class="modal" id="actionModal">
